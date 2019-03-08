@@ -1,7 +1,7 @@
 
 function Ship(name, port) {
   this.name = name 
-  this.startingPort = port ;
+  this.port = port ;
 }
 
 

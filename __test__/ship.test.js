@@ -4,9 +4,8 @@ describe('Cruise Ship', () => {
 let cruiseShip 
 
   beforeEach(() => {
-    cruiseShip = new Ship ('Oasis');
-    }) 
-       
+    cruiseShip = new Ship ('Oasis', 'Dover');
+})    
 
   it('returns a cruise ship object', ()=> {
    
@@ -16,6 +15,6 @@ let cruiseShip
 
   it('name of starting port', ()=> {
  
-    expect(this.startingPort).toBe('Dover')
+    expect(cruiseShip.port).toEqual('Dover')
   })
 });
