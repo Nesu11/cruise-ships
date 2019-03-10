@@ -1,14 +1,30 @@
 
-function Ship(currentPort,) {
-  this.currentPort = currentPort;
-}
+function Ship(itinerary) {
+    this.itinerary = itinerary ;
+    this.currentPort = itinerary.ports[0]; 
+    this.previousPort = null;
+
+  this.currentPort.addShip(this);
+};
+
 Ship.prototype.setSail = function() {
-this.currentPort = null
-}
+    const indexOfCurrentPort = this.itinerary.ports.indexOf(this.currentPort);
+    if (indexOfCurrentPort === this.itinerary.ports.length - 1) {
+      throw new Error('itinerary null');
+    }
+    this.currentPort.removeShip(this);
+    this.previousPort = this.currentPort;
+    this.currentPort = null
+};
 
-Ship.prototype.dock = function(port) {
-this.currentPort = port
-}
 
+Ship.prototype.dock = function() {
+const itinerary = this.itinerary;
+const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
 
-module.exports = Ship ; 
+this.currentPort = itinerary.ports[previousPortIndex + 1];
+this.currentPort.addShip(this);
+} 
+  
+
+module.exports = Ship ;
