@@ -10,7 +10,7 @@ function Ship(itinerary) {
 Ship.prototype.setSail = function() {
     const indexOfCurrentPort = this.itinerary.ports.indexOf(this.currentPort);
     if (indexOfCurrentPort === this.itinerary.ports.length - 1) {
-      throw new Error('itinerary null');
+      throw new Error('end of itinerary');
     }
     this.currentPort.removeShip(this);
     this.previousPort = this.currentPort;

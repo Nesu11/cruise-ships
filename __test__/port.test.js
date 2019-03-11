@@ -6,18 +6,18 @@ describe('Port', () => {
   beforeEach(() => {
     port = new Port ('Dover');
   });
-  xit('returns Port object', () => {
+  it('returns Port object', () => {
     expect(new Port()).toBeInstanceOf(Object) 
   });
-  xit('set name property for port', () => {
+  it('set name property for port', () => {
     expect(port.name).toBe('Dover')
   })
-  xit('adds a ship to port', () => {
+  it('adds a ship to port', () => {
     const storeShip = {}
     port.addShip(storeShip)
     expect(port.ships).toContain(storeShip)
   })
-  xit('removes a ship from port', () => {
+  it('removes a ship from port', () => {
     const oasis = jest.fn()
     const titanic = jest.fn()
 

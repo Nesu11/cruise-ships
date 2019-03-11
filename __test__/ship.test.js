@@ -16,7 +16,7 @@ let itinerary
 })    
 
   it('returns a cruise ship object', ()=> {
-    expect(new Ship()).toBeInstanceOf(Object);
+    expect(new Ship(itinerary)).toBeInstanceOf(Object);
   });
 
   it('name of starting port', ()=> {
@@ -36,9 +36,15 @@ let itinerary
     expect(ship.currentPort).toBe(hull)
     expect(hull.ships).toContain(ship);
   });
-  xit('gets added to port on instantiation', ()=> {
+  it('gets added to port on instantiation', ()=> {
+    const southhampton = new Port('southhampton');
+
+    const itinerary = new Itinerary([southhampton]);
   
-    expect(hull.ships).toContain(ship)
+    const ship = new Ship(itinerary);
+  
+    expect(southhampton.ships).toContain(ship)
+    //expect(dover.ships).toContain(ship)
   })
 
 });
