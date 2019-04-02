@@ -20,6 +20,8 @@ describe('Port', () => {
   it('removes a ship from port', () => {
     const oasis = jest.fn()
     const titanic = jest.fn()
+    //const ship = {name: 'ship 0'}
+    //const ship1 = {name:'ship 1'}
 
     port.addShip(oasis);
     port.addShip(titanic)

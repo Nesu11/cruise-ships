@@ -44,7 +44,7 @@ let itinerary
     const ship = new Ship(itinerary);
   
     expect(southhampton.ships).toContain(ship)
-    //expect(dover.ships).toContain(ship)
+    // expect(dover.ships).toContain(ship)
   })
 
 });

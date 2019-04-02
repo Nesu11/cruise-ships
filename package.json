@@ -17,6 +17,7 @@
     "jest": "^24.1.0"
   },
   "dependencies": {
-    "@babel/types": "^7.3.4"
+    "@babel/types": "^7.3.4",
+    "normalize.css": "^8.0.1"
   }
 }
