@@ -1,14 +1,40 @@
 
-function Ship(currentPort,) {
-  this.currentPort = currentPort;
-}
-Ship.prototype.setSail = function() {
-this.currentPort = null
-}
+(function exportShip () {
+  function Ship(itinerary) {
+    this.itinerary = itinerary;
+    this.currentPort = itinerary.ports[0];
+    this.previousPort = null;
+  
+    this.currentPort.addShip(this);
+  };
+  
+  Ship.prototype.setSail = function() {
+    const indexOfCurrentPort = this.itinerary.ports.indexOf(this.currentPort);
+    if (indexOfCurrentPort === this.itinerary.ports.length - 1) {
+      throw new Error('end of itinerary');
+    }
+    this.currentPort.removeShip(this);
+    this.previousPort = this.currentPort;
+    this.currentPort = null
+  };
+  
+  
+  Ship.prototype.dock = function() {
+   const itinerary = this.itinerary;
+   const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
+  
+    this.currentPort = itinerary.ports[previousPortIndex + 1];
+    this.currentPort.addShip(this);
+  };
 
-Ship.prototype.dock = function(port) {
-this.currentPort = port
-}
+  if (typeof module !== 'undefined' && module.exports) {
 
+    module.exports = Ship;
 
-module.exports = Ship ; 
+  } else {
+
+    window.Ship = Ship;
+
+  };
+
+}());

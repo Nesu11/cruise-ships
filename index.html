@@ -11,6 +11,44 @@
 
 </head>
 <body>
+    <div id="viewport">
+        <div id="port">
+        </div>
+        <div id="ship"></div>
+
+
+        <button id="sailButton">Set Sail!</button>
+    </div>
+    <script src="src/controller.js"></script>
+    <script src="src/port.js"></script>
+    <script src="src/itinerary.js"></script>
+    <script src="src/ship.js"></script>
+
+    <script> 
+    const controller = new Controller(); 
+
+    const itinerary = new Itinerary([
+        new Port('Dover'),
+        new Port('New York City'),
+        new Port('San Juan'),
+        new Port('Grand Turk'),
+    ]);
+
+    const ship = new Ship(itinerary);
+
+    controller.renderPorts(itinerary.ports);
+    controller.renderShip(ship);
     
+    </script>
+
+
+  
+
+
+
+
+
+
+
 </body>
 </html>

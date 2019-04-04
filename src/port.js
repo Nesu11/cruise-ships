@@ -1,5 +1,26 @@
-function Port(name) {
+(function exportPort () {
+  function Port(name) {
   this.name = name;
+  this.ships = []
 };
+Port.prototype.addShip = function (shipArrival) {
+  this.ships.push(shipArrival)
+  };
+  
+  Port.prototype.removeShip = function (shipDeparture) {
+  const portIndex = this.ships.indexOf(shipDeparture)
+   this.ships.splice(portIndex, 1); //1- delete count
+  }
+  
+  if (typeof module !== 'undefined' && module.exports) {
 
-module.exports = Port;
+    module.exports = Port;
+
+  } else {
+
+    window.Port = Port;
+
+  }
+
+}());
+
