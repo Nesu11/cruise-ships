@@ -8,6 +8,7 @@
     <title>Cruise Ships</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 
 </head>
 <body>
@@ -25,7 +26,6 @@
     <script src="src/ship.js"></script>
 
     <script> 
-    const controller = new Controller(); 
 
     const itinerary = new Itinerary([
         new Port('Dover'),
@@ -35,9 +35,10 @@
     ]);
 
     const ship = new Ship(itinerary);
+    const controller = new Controller(ship); 
 
     controller.renderPorts(itinerary.ports);
-    controller.renderShip(ship);
+    controller.renderShip();
     
     </script>
 
