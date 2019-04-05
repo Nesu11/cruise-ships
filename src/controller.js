@@ -56,7 +56,8 @@
   Controller.prototype.renderShip = function () {
     const ship = this.ship;
 
-    const shipPortIndex = ship.itinerary.ports.IndexOf(ship.CurrentPort);
+    //const shipPortIndex = ship.itinerary.ports.IndexOf(ship.CurrentPort);
+    const shipPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
 
     const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
 
