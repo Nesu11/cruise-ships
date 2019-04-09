@@ -77,15 +77,17 @@
     const nextPortIndex = currentPortIndex + 1
     
     const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
-    
-    const shipElement = document.querySelector('#ship');
-    
-    if (!nextPortElement) {
 
-        return alert('End of the line!');
+    if (!nextPortElement) {
+        this.renderMessage(`End of the line! ${ship.currentPort.name}`)
+        //return alert('End of the line!');
+    } else {
+    this.renderMessage(`Now departing ${ship.currentPort.name}`)
     }
 
-    
+    ship.setSail();
+
+    const shipElement = document.querySelector('#ship');
 
     const sailInterval = setInterval(() => {
 
@@ -94,6 +96,7 @@
       if (shipLeft === (nextPortElement.offsetLeft - 32)) {
 
         ship.dock();
+        this.renderMessage(`Arrived at: ${ship.currentPort.name}`);
 
         clearInterval(sailInterval);
       };
@@ -102,6 +105,26 @@
 
     }, 20);
   };
+
+
+
+  Controller.prototype.renderMessage = function (message) {
+    const messageElement = document.createElement('div');
+
+    messageElement.id = 'message';
+    
+    messageElement.innerHTML = message;
+    
+    const viewport = document.querySelector('#viewport');
+    
+    viewport.appendChild(messageElement);
+    setTimeout(() => {
+
+        viewport.removeChild(messageElement);
+      
+      }, 2000);
+
+  }
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
